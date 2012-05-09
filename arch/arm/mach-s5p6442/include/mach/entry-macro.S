@@ -29,7 +29,7 @@
 	.macro	get_irqnr_and_base, irqnr, irqstat, base, tmp
 
 	@ check the vic0
-	mov	\irqnr, # S3C_IRQ_OFFSET + 31
+	mov	\irqnr, # S5P_IRQ_OFFSET + 31
 	ldr	\irqstat, [ \base, # VIC_IRQ_STATUS ]
 	teq	\irqstat, #0
 

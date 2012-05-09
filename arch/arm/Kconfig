@@ -734,7 +734,7 @@ config ARCH_S5P64X0
 
 config ARCH_S5P6442
 	bool "Samsung S5P6442"
-	select PLAT_SAMSUNG
+	select PLAT_S5P
 	select CPU_V6
 	select ARM_VIC
 	select HAVE_CLK

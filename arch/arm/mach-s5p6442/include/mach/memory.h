@@ -18,7 +18,7 @@
 #define PHYS_SIZE_DDR_256M		(256 * 1024 * 1024)
 #define PHYS_OFFSET_ONEDRAM		UL(0x40000000)
 #define PHYS_SIZE_ONEDRAM		(80* 1024 * 1024)
-#define PHYS_OFFSET			PHYS_OFFSET_DDR
+//#define PHYS_OFFSET			PHYS_OFFSET_DDR
 
 #define NODE_MEM_SIZE_BITS 29
 
@@ -26,5 +26,7 @@
 
 #define __virt_to_bus(x) __virt_to_phys(x)
 #define __bus_to_virt(x) __phys_to_virt(x)
+#define __pfn_to_bus(x) __pfn_to_phys(x)
+#define __bus_to_pfn(x)	__phys_to_pfn(x)
 
 #endif
