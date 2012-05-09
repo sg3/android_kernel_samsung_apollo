@@ -732,6 +732,32 @@ config ARCH_S5P64X0
 	  Samsung S5P64X0 CPU based systems, such as the Samsung SMDK6440,
 	  SMDK6450.
 
+config ARCH_S5P6442
+	bool "Samsung S5P6442"
+	select PLAT_SAMSUNG
+	select CPU_V6
+	select ARM_VIC
+	select HAVE_CLK
+	select NO_IOPORT
+	select ARCH_USES_GETTIMEOFFSET
+	select ARCH_HAS_CPUFREQ
+	select ARCH_REQUIRE_GPIOLIB
+	select SAMSUNG_CLKSRC
+	select SAMSUNG_IRQ_VIC_TIMER
+	select SAMSUNG_IRQ_UART
+	select S3C_GPIO_TRACK
+	select S3C_GPIO_PULL_UPDOWN
+	select S3C_GPIO_CFG_S3C24XX
+	select S3C_GPIO_CFG_S3C64XX
+	select S3C_DEV_NAND
+	select USB_ARCH_HAS_OHCI
+	select SAMSUNG_GPIOLIB_4BIT
+	select HAVE_S3C2410_I2C if I2C
+	select HAVE_S3C2410_WATCHDOG if WATCHDOG
+	help
+	  Samsung S5P6442 CPU based systems, such as the Samsung SMDK6442,
+	  Galaxy Apollo.
+
 config ARCH_S5PC100
 	bool "Samsung S5PC100"
 	select GENERIC_GPIO
@@ -982,6 +1008,10 @@ source "arch/arm/mach-s3c64xx/Kconfig"
 endif
 
 source "arch/arm/mach-s5p64x0/Kconfig"
+
+if ARCH_S5P6442
+source "arch/arm/mach-s5p6442/Kconfig"
+endif
 
 source "arch/arm/mach-s5pc100/Kconfig"
 
