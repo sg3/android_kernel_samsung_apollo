@@ -1,9 +1,9 @@
-/* linux/arch/arm/mach-s5p6442/include/mach/memory.h
+/* linux/arch/arm/mach-s5p64x0/include/mach/memory.h
  *
- * Copyright 2008 Openmoko, Inc.
- * Copyright 2008 Simtec Electronics
- *      Ben Dooks <ben@simtec.co.uk>
- *      http://armlinux.simtec.co.uk/
+ * Copyright (c) 2009-2010 Samsung Electronics Co., Ltd.
+ *		http://www.samsung.com
+ *
+ * S5P64X0 - Memory definitions
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -11,22 +11,9 @@
 */
 
 #ifndef __ASM_ARCH_MEMORY_H
-#define __ASM_ARCH_MEMORY_H
+#define __ASM_ARCH_MEMORY_H __FILE__
 
-#define PHYS_OFFSET_DDR			UL(0x20000000)
-#define PHYS_SIZE_DDR_128M		(128 * 1024 * 1024)
-#define PHYS_SIZE_DDR_256M		(256 * 1024 * 1024)
-#define PHYS_OFFSET_ONEDRAM		UL(0x40000000)
-#define PHYS_SIZE_ONEDRAM		(80* 1024 * 1024)
-//#define PHYS_OFFSET			PHYS_OFFSET_DDR
-
-#define NODE_MEM_SIZE_BITS 29
-
+#define PLAT_PHYS_OFFSET		UL(0x20000000)
 #define CONSISTENT_DMA_SIZE	SZ_8M
 
-#define __virt_to_bus(x) __virt_to_phys(x)
-#define __bus_to_virt(x) __phys_to_virt(x)
-#define __pfn_to_bus(x) __pfn_to_phys(x)
-#define __bus_to_pfn(x)	__phys_to_pfn(x)
-
-#endif
+#endif /* __ASM_ARCH_MEMORY_H */

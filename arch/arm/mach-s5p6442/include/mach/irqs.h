@@ -1,12 +1,14 @@
-/* linux/arch/arm/mach-s5p6442/include/mach/irqs.h
+/* linux/arch/arm/mach-s5p64x0/include/mach/irqs.h
  *
- * Copyright 2008 Openmoko, Inc.
- * Copyright 2008 Simtec Electronics
- *      Ben Dooks <ben@simtec.co.uk>
- *      http://armlinux.simtec.co.uk/
+ * Copyright 2009-2010 Samsung Electronics Co., Ltd.
+ *		http://www.samsung.com
  *
- * S3C6400 - IRQ definitions
- */
+ * S5P64X0 - IRQ definitions
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+*/
 
 #ifndef __ASM_ARCH_IRQS_H
 #define __ASM_ARCH_IRQS_H __FILE__

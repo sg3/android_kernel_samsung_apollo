@@ -1,53 +1,23 @@
-/* linux/arch/arm/mach-s5p6442/include/mach/system.h
+/* linux/arch/arm/mach-s5p64x0/include/mach/system.h
  *
- * Copyright 2008 Openmoko, Inc.
- * Copyright 2008 Simtec Electronics
- *      Ben Dooks <ben@simtec.co.uk>
- *      http://armlinux.simtec.co.uk/
+ * Copyright (c) 2009-2010 Samsung Electronics Co., Ltd.
+ *		http://www.samsung.com
  *
- * S3C6400 - system implementation
- */
+ * S5P64X0 - system support header
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+*/
 
 #ifndef __ASM_ARCH_SYSTEM_H
 #define __ASM_ARCH_SYSTEM_H __FILE__
 
-#include <linux/io.h>
-#include <mach/map.h>
-#include <plat/regs-watchdog.h>
+#include <plat/system-reset.h>
 
-void (*s5p64xx_idle)(void);
-void (*s5p64xx_reset_hook)(void);
-
-void s5p64xx_default_idle(void)
+static void arch_idle(void)
 {
 	/* nothing here yet */
 }
-	
-static void arch_idle(void)
-{
-	if (s5p64xx_idle != NULL)
-		(s5p64xx_idle)();
-	else
-		s5p64xx_default_idle();
-}
 
-void arch_reset(char mode, const char *cmd)
-{
-	/*  Watch Reset is used */
-	void __iomem * wdt ;
-	wdt = ioremap(S5P64XX_PA_WATCHDOG, 0x400);
-        
-        if (wdt == NULL) 
-        {
-                printk("failed to ioremap() region in arch_reset()\n");
-                return ;
-        }
-        
-        __raw_writel(0x1,wdt +0x4 );
-        __raw_writel(0x8021,wdt);
-	
-        /* Never happened */
-        mdelay(5000);
-}
-
-#endif /* __ASM_ARCH_IRQ_H */
+#endif /* __ASM_ARCH_SYSTEM_H */

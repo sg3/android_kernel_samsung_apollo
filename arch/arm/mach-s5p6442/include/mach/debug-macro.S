@@ -1,9 +1,7 @@
-/* arch/arm/mach-s3c6442/include/mach/debug-macro.S
+/* linux/arch/arm/mach-s5p64x0/include/mach/debug-macro.S
  *
- * Copyright 2008 Openmoko, Inc.
- * Copyright 2008 Simtec Electronics
- *	http://armlinux.simtec.co.uk/
- *	Ben Dooks <ben@simtec.co.uk>
+ * Copyright (c) 2009-2010 Samsung Electronics Co., Ltd.
+ *		http://www.samsung.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -12,27 +10,24 @@
 
 /* pull in the relevant register and map files. */
 
-#include <mach/map.h>
+#include <plat/map-base.h>
+#include <plat/map-s5p.h>
+
 #include <plat/regs-serial.h>
 
-	/* note, for the boot process to work we have to keep the UART
-	 * virtual address aligned to an 1MiB boundary for the L1
-	 * mapping the head code makes. We keep the UART virtual address
-	 * aligned and add in the offset when we load the value here.
-	 */
-
 	.macro addruart, rp, rv
-		ldr	\rp, = S3C_PA_UART
-		ldr	\rv, = (S3C_VA_UART + S3C_PA_UART & 0xfffff)
+		mov	\rp, #0xE0000000
+		orr	\rp, \rp, #0x00100000
+		ldr	\rp, [\rp, #0x118 ]
+		and	\rp, \rp, #0xff000
+		teq	\rp, #0x50000		@@ S5P6450
+		ldreq	\rp, =0xEC800000
+		movne	\rp, #0xEC000000	@@ S5P6440
+		ldrne	\rv, = S3C_VA_UART
 #if CONFIG_DEBUG_S3C_UART != 0
 		add	\rp, \rp, #(0x400 * CONFIG_DEBUG_S3C_UART)
 		add	\rv, \rv, #(0x400 * CONFIG_DEBUG_S3C_UART)
 #endif
 	.endm
-
-/* include the reset of the code which will do the work, we're only
- * compiling for a single cpu processor type so the default of s3c2440
- * will be fine with us.
- */
 
 #include <plat/debug-macro.S>

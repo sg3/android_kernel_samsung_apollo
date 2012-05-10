@@ -1,12 +1,22 @@
-/* linux/arch/arm/mach-s3c6400/include/mach/pwm-clock.h
+/* linux/arch/arm/mach-s5p64x0/include/mach/pwm-clock.h
+ *
+ * Copyright (c) 2009-2010 Samsung Electronics Co., Ltd.
+ *		http://www.samsung.com
  *
  * Copyright 2008 Openmoko, Inc.
  * Copyright 2008 Simtec Electronics
  *      Ben Dooks <ben@simtec.co.uk>
  *      http://armlinux.simtec.co.uk/
  *
- * S3C64xx - pwm clock and timer support
- */
+ * S5P64X0 - pwm clock and timer support
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+*/
+
+#ifndef __ASM_ARCH_PWMCLK_H
+#define __ASM_ARCH_PWMCLK_H __FILE__
 
 /**
  * pwm_cfg_src_is_tclk() - return whether the given mux config is a tclk
@@ -17,7 +27,7 @@
  */
 static inline int pwm_cfg_src_is_tclk(unsigned long tcfg)
 {
-	return tcfg >= S3C64XX_TCFG1_MUX_TCLK;
+	return 0;
 }
 
 /**
@@ -53,4 +63,6 @@ static inline unsigned long pwm_tdiv_div_bits(unsigned int div)
 	return ilog2(div);
 }
 
-#define S3C_TCFG1_MUX_TCLK S3C64XX_TCFG1_MUX_TCLK
+#define S3C_TCFG1_MUX_TCLK 0
+
+#endif /* __ASM_ARCH_PWMCLK_H */

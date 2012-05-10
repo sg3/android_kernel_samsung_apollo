@@ -1,8 +1,7 @@
-# arch/arm/mach-s5p6442/Makefile
+# arch/arm/mach-s5p64x0/Makefile
 #
-# Copyright 2008 Openmoko, Inc.
-# Copyright 2008 Simtec Electronics
-# Copyright 2010 Samsung Electronics Co. Ltd.
+# Copyright (c) 2009-2010 Samsung Electronics Co., Ltd.
+# 		http://www.samsung.com
 #
 # Licensed under GPLv2
 
@@ -11,25 +10,21 @@ obj-m				:=
 obj-n				:=
 obj-				:=
 
-# Core support for S5P6442 system
+# Core support for S5P64X0 system
 
-obj-$(CONFIG_CPU_S5P6442)	+= cpu.o
-obj-$(CONFIG_CPU_S5P6442)	+= dma.o
-
-# Helper and device support
-
-obj-$(CONFIG_S5P6442_SETUP_SDHCI)	+= setup-sdhci.o
-
-obj-$(CONFIG_PM)    += pm.o
+obj-$(CONFIG_ARCH_S5P64X0)	+= cpu.o init.o clock.o dma.o gpiolib.o
+obj-$(CONFIG_ARCH_S5P64X0)	+= setup-i2c0.o
+obj-$(CONFIG_CPU_S5P6440)	+= clock-s5p6440.o
+obj-$(CONFIG_CPU_S5P6450)	+= clock-s5p6450.o
 
 # machine support
-obj-$(CONFIG_MACH_SMDK6442)	+= mach-smdk6442.o
-obj-$(CONFIG_MACH_APOLLO)    += mach-apollo.o apollo-rfkill.o
 
-# Button EINT support
-obj-$(CONFIG_MACH_SMDK6442)	+= button-smdk6442.o
+obj-$(CONFIG_MACH_SMDK6440)	+= mach-smdk6440.o
+obj-$(CONFIG_MACH_SMDK6450)	+= mach-smdk6450.o
 
-#sec headset support
-obj-$(CONFIG_SEC_HEADSET)	+= sec_headset.o
+# device support
 
-obj-$(CONFIG_CPU_IDLE)		+= cpuidle.o
+obj-y				+= dev-audio.o
+obj-$(CONFIG_S3C64XX_DEV_SPI)	+= dev-spi.o
+
+obj-$(CONFIG_S5P64X0_SETUP_I2C1)	+= setup-i2c1.o

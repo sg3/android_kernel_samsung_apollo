@@ -1,9 +1,17 @@
-/* arch/arm/mach-s5p6442/include/mach/io.h
+/* linux/arch/arm/mach-s5p64x0/include/mach/io.h
  *
- * Copyright 2008-2010 Ben Dooks <ben-linux@fluff.org>
+ * Copyright (c) 2010 Samsung Electronics Co., Ltd.
+ *		http://www.samsung.com
  *
- * Default IO routines for S5P6442
- */
+ * Copyright 2008 Simtec Electronics
+ *	Ben Dooks <ben-linux@fluff.org>
+ *
+ * Default IO routines for S5P64X0 based
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+*/
 
 #ifndef __ASM_ARM_ARCH_IO_H
 #define __ASM_ARM_ARCH_IO_H
