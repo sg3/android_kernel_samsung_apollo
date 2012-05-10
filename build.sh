@@ -11,7 +11,10 @@ else
 fi
 
 echo "Compiling the kernel"
-rm arch/arm/boot/zImage
+if test -f arch/arm/boot/zImage; then
+	rm arch/arm/boot/zImage
+fi
+
 make -j2 CROSS_COMPILE=/usr/arm-toolchain/bin/arm-eabi- ARCH=arm
 
 if test -f arch/arm/boot/zImage; then
